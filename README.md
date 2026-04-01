@@ -33,8 +33,8 @@ Thalian connects your identity providers, SaaS applications, device managers, HR
 ### Identity Providers
 | Platform | Sync | Rules | Remediation |
 |----------|------|-------|-------------|
-| Okta | ✅ | ✅ | ✅ Suspend, revoke OAuth token, block app, remove admin role, revoke license, remove from group, rotate credentials |
-| Microsoft Entra ID | ✅ | ✅ incl. Conditional Access | ✅ Suspend, revoke OAuth token, block app, remove admin role, revoke license, remove from group, rotate credentials |
+| Okta | ✅ | ✅ 14 Okta-specific rules: MFA spike, factor disabled, account compromise, API token security, config audit, password/session policy | ✅ Suspend, revoke OAuth token, block app, remove admin role, revoke license, remove from group, rotate credentials |
+| Microsoft Entra ID | ✅ | ✅ 10 Entra-specific rules: Conditional Access policy gaps, app registration secrets, legacy auth, B2B guest staleness, security defaults | ✅ Suspend, revoke OAuth token, block app, remove admin role, revoke license, remove from group, rotate credentials |
 | Google Workspace | ✅ | ✅ | ✅ Suspend, force password change, revoke OAuth token, revoke sessions, block app, remove admin role, revoke license, remove from group, rotate credentials |
 | JumpCloud | ✅ | ✅ | ✅ Suspend, remove admin role, remove from group |
 | OneLogin | ✅ | ✅ | ✅ Suspend, force password change, revoke sessions, force MFA enroll, remove admin role |
@@ -56,16 +56,16 @@ Thalian connects your identity providers, SaaS applications, device managers, HR
 ### HR & People
 | Platform | Sync | Rules |
 |----------|------|-------|
-| Rippling | ✅ | ✅ 14 lifecycle rules |
-| BambooHR | ✅ | ✅ 14 lifecycle rules |
+| Rippling | ✅ | ✅ 13 lifecycle rules: terminated access, offboarding delay, ghost employee, department drift, manager mismatch, compound cross-platform |
+| BambooHR | ✅ | ✅ 13 lifecycle rules (same as Rippling) |
 | Workday | ✅ | ✅ Terminated access |
 
 ### Cloud Infrastructure
 | Platform | Sync | Rules |
 |----------|------|-------|
-| AWS IAM | ✅ | ✅ Admin gap, no MFA, stale users |
-| GCP IAM | ✅ | ✅ Owner sprawl, public bindings, service account roles, cross-project admin |
-| Azure IAM | ✅ | ✅ Role assignments |
+| AWS IAM | ✅ | ✅ 11 rules: admin/user not in IDP, no MFA, stale users, access key rotation, root account security, unused roles, cross-account trust |
+| GCP IAM | ✅ | ✅ 12 rules: owner/user not in IDP, public bindings, owner sprawl, SA key rotation, cross-project admin, org-level bindings, custom roles |
+| Azure IAM | ✅ | ✅ 4 rules: owner/user not in IDP, stale role assignments, service principal with owner role |
 
 ### SaaS & Collaboration
 | Platform | Sync | Rules | Remediation |
@@ -77,7 +77,7 @@ Thalian connects your identity providers, SaaS applications, device managers, HR
 | SharePoint | ✅ | ✅ External sharing | — |
 | GitHub | ✅ | ✅ Outside collaborators, org owners | ✅ Revoke access, remove org member |
 | Confluence | ✅ | ✅ Suspended user access | — |
-| Salesforce | ✅ | ✅ Admin gap, stale CRM access | — |
+| Salesforce | ✅ | ✅ 9 rules: admin/user not in IDP, stale access, connected apps, API-only users, session security, data export, profile permissions | — |
 
 ### ITSM (ticket creation)
 Jira · ServiceNow · Freshservice · Zendesk
