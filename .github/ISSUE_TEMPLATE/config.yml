@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://docs.thalian.ai
+    about: Setup guides, integration docs, and platform reference
+  - name: Changelog
+    url: https://docs.thalian.ai/changelog
+    about: Latest features, fixes, and integration updates
+  - name: Status Page
+    url: https://status.thalian.ai
+    about: Platform uptime and incident history
+  - name: Security Vulnerability
+    url: mailto:security@thalian.ai
+    about: Report a security vulnerability — do not use public issues
+  - name: Support
+    url: https://app.thalian.ai
+    about: For billing or account help, use the support form in the app
