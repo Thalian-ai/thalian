@@ -33,25 +33,25 @@ Thalian connects your identity providers, SaaS applications, device managers, HR
 ### Identity Providers
 | Platform | Sync | Rules | Remediation |
 |----------|------|-------|-------------|
-| Okta | ✅ | ✅ | ✅ Suspend, force password reset, revoke sessions |
-| Microsoft Entra ID | ✅ | ✅ incl. Conditional Access | ✅ Suspend, revoke sessions |
-| Google Workspace | ✅ | ✅ | ✅ Suspend, revoke OAuth |
-| JumpCloud | ✅ | ✅ | ✅ Suspend |
-| OneLogin | ✅ | ✅ | ✅ Suspend |
+| Okta | ✅ | ✅ | ✅ Suspend, revoke OAuth token, block app, remove admin role, revoke license, remove from group, rotate credentials |
+| Microsoft Entra ID | ✅ | ✅ incl. Conditional Access | ✅ Suspend, revoke OAuth token, block app, remove admin role, revoke license, remove from group, rotate credentials |
+| Google Workspace | ✅ | ✅ | ✅ Suspend, force password change, revoke OAuth token, revoke sessions, block app, remove admin role, revoke license, remove from group, rotate credentials |
+| JumpCloud | ✅ | ✅ | ✅ Suspend, remove admin role, remove from group |
+| OneLogin | ✅ | ✅ | ✅ Suspend, force password change, revoke sessions, force MFA enroll, remove admin role |
 
 ### Device Management
-| Platform | Sync | Rules |
-|----------|------|-------|
-| Microsoft Intune | ✅ | ✅ |
-| Jamf Pro | ✅ | ✅ |
-| Kandji | ✅ | ✅ |
-| Hexnode | ✅ | ✅ |
+| Platform | Sync | Rules | Remediation |
+|----------|------|-------|-------------|
+| Microsoft Intune | ✅ | ✅ | ✅ Enroll device |
+| Jamf Pro | ✅ | ✅ | ✅ Enroll device |
+| Kandji | ✅ | ✅ | ✅ Enroll device |
+| Hexnode | ✅ | ✅ | ✅ Device actions |
 
 ### Endpoint Security
-| Platform | Sync | Rules |
-|----------|------|-------|
-| CrowdStrike Falcon | ✅ | ✅ Degraded sensor, contained host |
-| SentinelOne | ✅ | ✅ Active threat, offline sensor |
+| Platform | Sync | Rules | Remediation |
+|----------|------|-------|-------------|
+| CrowdStrike Falcon | ✅ | ✅ Degraded sensor, contained host | ✅ Contain host, initiate scan |
+| SentinelOne | ✅ | ✅ Active threat, offline sensor | ✅ Agent actions |
 
 ### HR & People
 | Platform | Sync | Rules |
