@@ -67,16 +67,28 @@ Thalian connects your identity providers, SaaS applications, device managers, HR
 | GCP IAM | ✅ | ✅ 12 rules: owner/user not in IDP, public bindings, owner sprawl, SA key rotation, cross-project admin, org-level bindings, custom roles |
 | Azure IAM | ✅ | ✅ 4 rules: owner/user not in IDP, stale role assignments, service principal with owner role |
 
-### SaaS & Collaboration
+### Communication
 | Platform | Sync | Rules | Remediation |
 |----------|------|-------|-------------|
 | Slack | ✅ | ✅ Offboarded users, guests | Notify only |
 | Slack Enterprise Grid | ✅ | ✅ Offboarded users, guests | ✅ Deactivate via Admin API |
 | Microsoft Teams | ✅ | ✅ Offboarded user activity | Notify only |
 | Microsoft Outlook | ✅ | ✅ Mailbox forwarding rules | — |
+
+### Collaboration
+| Platform | Sync | Rules | Remediation |
+|----------|------|-------|-------------|
 | SharePoint | ✅ | ✅ External sharing | — |
-| GitHub | ✅ | ✅ Outside collaborators, org owners | ✅ Revoke access, remove org member |
 | Confluence | ✅ | ✅ Suspended user access | — |
+
+### Developer Tools
+| Platform | Sync | Rules | Remediation |
+|----------|------|-------|-------------|
+| GitHub | ✅ | ✅ Outside collaborators, org owners | ✅ Revoke access, remove org member |
+
+### CRM
+| Platform | Sync | Rules | Remediation |
+|----------|------|-------|-------------|
 | Salesforce | ✅ | ✅ 9 rules: admin/user not in IDP, stale access, connected apps, API-only users, session security, data export, profile permissions | — |
 
 ### ITSM (ticket creation)
@@ -89,7 +101,7 @@ Cisco Meraki · Auvik
 
 ## Key capabilities
 
-**190+ analysis rules** across 8 categories — identity security, access hygiene, shadow IT, device posture, license waste, behavioral anomaly, drift signals, and compound risk.
+**290+ analysis rules** across 10 categories — identity security, access hygiene, shadow IT, device posture, license waste, behavioral anomaly, drift signals, compound risk, access risk, and configuration.
 
 **AI assistant** — Ask anything about your environment. "Which admins don't have MFA?" "Show me everyone with access to Salesforce who isn't in Okta." "What changed since yesterday?" Powered by Claude.
 
