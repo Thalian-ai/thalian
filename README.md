@@ -64,20 +64,20 @@ Thalian connects your identity providers, SaaS applications, device managers, HR
 | Platform | Sync | Rules |
 |----------|------|-------|
 | AWS IAM | ✅ | ✅ Admin gap, no MFA, stale users |
-| GCP IAM | ✅ | ✅ Owner sprawl, public bindings |
+| GCP IAM | ✅ | ✅ Owner sprawl, public bindings, service account roles, cross-project admin |
 | Azure IAM | ✅ | ✅ Role assignments |
 
 ### SaaS & Collaboration
-| Platform | Sync | Rules |
-|----------|------|-------|
-| Slack | ✅ | ✅ Offboarded users, guests |
-| Slack Enterprise Grid | ✅ | ✅ | ✅ Deactivate via Admin API |
-| Microsoft Teams | ✅ | ✅ Offboarded user activity |
-| Microsoft Outlook | ✅ | ✅ Mailbox forwarding rules |
-| SharePoint | ✅ | ✅ External sharing |
-| GitHub | ✅ | ✅ Outside collaborators, org owners |
-| Confluence | ✅ | ✅ Suspended user access |
-| Salesforce | ✅ | ✅ Admin gap, stale CRM access |
+| Platform | Sync | Rules | Remediation |
+|----------|------|-------|-------------|
+| Slack | ✅ | ✅ Offboarded users, guests | Notify only |
+| Slack Enterprise Grid | ✅ | ✅ Offboarded users, guests | ✅ Deactivate via Admin API |
+| Microsoft Teams | ✅ | ✅ Offboarded user activity | Notify only |
+| Microsoft Outlook | ✅ | ✅ Mailbox forwarding rules | — |
+| SharePoint | ✅ | ✅ External sharing | — |
+| GitHub | ✅ | ✅ Outside collaborators, org owners | ✅ Revoke access, remove org member |
+| Confluence | ✅ | ✅ Suspended user access | — |
+| Salesforce | ✅ | ✅ Admin gap, stale CRM access | — |
 
 ### ITSM (ticket creation)
 Jira · ServiceNow · Freshservice · Zendesk
@@ -89,7 +89,7 @@ Cisco Meraki · Auvik
 
 ## Key capabilities
 
-**125+ analysis rules** across 9 categories — identity security, access hygiene, shadow IT, device posture, license waste, behavioral anomaly, drift signals, compound risk, and platform-specific detection.
+**190+ analysis rules** across 8 categories — identity security, access hygiene, shadow IT, device posture, license waste, behavioral anomaly, drift signals, and compound risk.
 
 **AI assistant** — Ask anything about your environment. "Which admins don't have MFA?" "Show me everyone with access to Salesforce who isn't in Okta." "What changed since yesterday?" Powered by Claude.
 
@@ -139,7 +139,7 @@ Cisco Meraki · Auvik
 - Immutable audit log with SHA-256 integrity hashing
 - Row-level security enforced on all database tables
 - All workspace data is strictly isolated — no cross-tenant access is possible
-- SOC 2 Type II controls mapped and tracked in-product
+- SOC 2 and ISO 27001 controls mapped and tracked in-product
 
 To report a security vulnerability, see [SECURITY.md](./SECURITY.md).
 
