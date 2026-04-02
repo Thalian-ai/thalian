@@ -6,6 +6,44 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ## April 2026
 
+### Integrations
+
+- **Zoom** — Connect your Zoom organization to detect users and admins not in your corporate IDP, SSO enforcement gaps, offboarded employees with active Zoom accounts, and stale unused seats. 5 detection rules.
+
+- **Box** — Connect Box to detect IDP gaps, offboarded employees retaining file access, and external sharing activity. Cross-references with IDP data to surface departed employees who still have access to corporate files. 4 detection rules.
+
+### New Features
+
+- **316 detection rules** — The analysis engine now runs 316 rules (up from 173 in mid-March), covering identity security, access hygiene, device posture, behavioral anomalies, shadow IT, license waste, compound cross-platform risks, and drift signals.
+
+- **Cross-platform compound rules** — 14 new rules that require data from 3+ connected platforms to fire — findings that no single tool can surface.
+
+- **AWS IAM deep analysis** — Credential Report, root MFA status, CloudTrail root activity, IAM role trust policy analysis. 11 AWS rules total.
+
+- **GCP service account key monitoring** — Detects unrotated user-managed keys and Workload Identity adoption gaps.
+
+- **Salesforce session and export detection** — Profile permission analysis, session IP restrictions, and bulk data export event detection. 9 Salesforce rules total.
+
+- **Entra ID Identity Protection and PIM** — Risky users, PIM permanent role assignments, admin MFA method analysis, guest invitation policies. 6 new rules.
+
+- **Okta security configuration analysis** — ThreatInsight, MFA enrollment policies, password policies, API token hygiene, session settings. 14 Okta rules.
+
+- **AI context for all platform metadata** — The AI assistant now surfaces detailed security configuration data from all connected platforms.
+
+### Improvements
+
+- **Remediation action buttons** across all finding types
+- **Application sanctions** directly from the Applications page
+- **Finding deduplication** — actioned findings no longer re-created on next analysis
+
+### Fixes
+
+- Findings suppression after remediation
+- Remediation denied actions no longer resurface
+- Reports sparkline accuracy
+- Integration removal cleanup and PII anonymization
+- Light mode readability improvements
+
 ### Security
 
 - **npm supply chain hardening** — In response to the March 30 Axios npm supply chain attack (CVE pending, attributed to North Korean threat actor UNC1069), we audited all dependencies and confirmed Thalian is not affected — axios is not in our dependency tree. We've additionally hardened our build pipeline: npm audit now blocks deployments on high-severity findings, postinstall scripts from transitive dependencies are disabled by default, all dependency versions are pinned exactly, and lockfile integrity validation has been added to CI.
