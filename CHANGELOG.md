@@ -14,6 +14,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ### New Features
 
+- **Cross-platform brute-force detection** — Detects credential stuffing attacks by correlating failed login events across identity providers and SaaS apps. Fires when multiple IPs attempt repeated failed logins against the same account. Escalates when the same email shows failures on both the IDP and downstream SaaS platforms — a coordinated attack no single tool can see.
+
 - **316 detection rules** — The analysis engine now runs 316 rules (up from 173 in mid-March), covering identity security, access hygiene, device posture, behavioral anomalies, shadow IT, license waste, compound cross-platform risks, and drift signals.
 
 - **Cross-platform compound rules** — 14 new rules that require data from 3+ connected platforms to fire — findings that no single tool can surface.
