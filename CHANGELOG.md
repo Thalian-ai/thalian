@@ -35,6 +35,10 @@ Notable changes, new features, and fixes for the Thalian platform.
 - **Remediation action buttons** across all finding types
 - **Application sanctions** directly from the Applications page
 - **Finding deduplication** — actioned findings no longer re-created on next analysis
+- **GCP IAM role names in findings** — findings now display specific role names (Owner, Editor, Viewer)
+- **Analysis cooldown reduced** from 5 minutes to 1 minute
+- **Sidebar findings count** updates immediately after analysis
+- **Analysis error reporting** — insert errors now reported to Sentry and audit log
 
 ### Fixes
 
@@ -43,6 +47,15 @@ Notable changes, new features, and fixes for the Thalian platform.
 - Reports sparkline accuracy
 - Integration removal cleanup and PII anonymization
 - Light mode readability improvements
+- Fixed integration removal failing with internal error
+- Fixed GCP IAM sync not discovering projects (v1 API fallback)
+- Fixed GCP IAM identities not syncing (identity_type constraint)
+- Fixed analysis dropping findings on duplicate finding_key batch insert
+- Fixed native client apps (iOS Mail, Android) flagged as shadow IT
+- Fixed ghost identities appearing after integration removal
+- Fixed compound finding "Related findings" links pointing to stale IDs
+- Fixed orphaned entities after integration removal (FK changed to CASCADE)
+- Fixed GCP IAM remediation buttons showing app actions instead of identity actions
 
 ### Security
 
