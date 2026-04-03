@@ -39,6 +39,11 @@ Notable changes, new features, and fixes for the Thalian platform.
 - **Analysis cooldown reduced** from 5 minutes to 1 minute
 - **Sidebar findings count** updates immediately after analysis
 - **Analysis error reporting** — insert errors now reported to Sentry and audit log
+- **Landing page overhaul** — OG image for social sharing, "See Live Demo" CTA, rendered FAQ section, mobile nav fix, Docs link in top nav
+- **Demo experience** — Guided 5-step walkthrough, demo banner with conversion CTA, streamlined login with request access form
+- **Signup hardening** — Company name required, personal email domains blocked
+- **SSO error messaging** — Admin self-service guidance when no SSO configured
+- **Iru naming** — Kandji references updated to "Iru (formerly Kandji)"
 
 ### Fixes
 
