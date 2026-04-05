@@ -32,6 +32,10 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **AI context for all platform metadata** — The AI assistant now surfaces detailed security configuration data from all connected platforms.
 
+- **Access review bulk decisions + overdue reminders** — Bulk approve/revoke in access review campaigns. Overdue reminder emails sent automatically to reviewers.
+
+- **Trial extension + compliance preview** — Free-tier users can self-serve a trial extension. Compliance page visible in preview mode for free users.
+
 ### Improvements
 
 - **Remediation action buttons** across all finding types
@@ -46,6 +50,11 @@ Notable changes, new features, and fixes for the Thalian platform.
 - **Signup hardening** — Company name required, personal email domains blocked
 - **SSO error messaging** — Admin self-service guidance when no SSO configured
 - **Iru naming** — Kandji references updated to "Iru (formerly Kandji)"
+- **FAIR-aligned entity risk scoring** — Entity risk scores now use a FAIR-aligned model for more meaningful, comparable scores across identity types
+- **Integration error classification** — Errors classified by type (auth expired, config invalid, rate limited). Sidebar badge and app-wide banner for critical errors
+- **Blast radius orbit visualization** — Interactive orbit diagram replaces flat list on entity detail blast radius view
+- **Behavioral baseline accuracy** — Directory login events excluded from baselines when a dedicated IDP is connected
+- **Finding category consolidation** — "Configuration" category folded into "Access Risk" and "Identity Security"
 
 ### Fixes
 
@@ -63,10 +72,17 @@ Notable changes, new features, and fixes for the Thalian platform.
 - Fixed compound finding "Related findings" links pointing to stale IDs
 - Fixed orphaned entities after integration removal (FK changed to CASCADE)
 - Fixed GCP IAM remediation buttons showing app actions instead of identity actions
+- Fixed billable identity count inflated by SaaS-only accounts — now IDP/directory users only
+- Fixed MTTR calculations including auto-resolved findings
+- Fixed device page managed/unmanaged tab split — now a single unified view
+- Fixed behavioral baseline suppression scope applying too broadly
+- Downgraded `suspicious_programmatic_login` from high to medium severity
 
 ### Security
 
 - **npm supply chain hardening** — In response to the March 30 Axios npm supply chain attack (CVE pending, attributed to North Korean threat actor UNC1069), we audited all dependencies and confirmed Thalian is not affected — axios is not in our dependency tree. We've additionally hardened our build pipeline: npm audit now blocks deployments on high-severity findings, postinstall scripts from transitive dependencies are disabled by default, all dependency versions are pinned exactly, and lockfile integrity validation has been added to CI.
+
+- **AI chat prompt injection hardening** — Topic-scoping guardrails added to the AI assistant to prevent prompt injection and constrain responses to IT security topics.
 
 ---
 
