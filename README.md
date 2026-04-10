@@ -101,7 +101,7 @@ Cisco Meraki · Auvik
 
 ## Key capabilities
 
-**290+ analysis rules** across 10 categories — identity security, access hygiene, shadow IT, device posture, license waste, behavioral anomaly, drift signals, compound risk, access risk, and configuration.
+**320 analysis rules** across 10 categories — identity security, access hygiene, shadow IT, device posture, license waste, behavioral anomaly, drift signals, compound risk, access risk, and configuration.
 
 **AI assistant** — Ask anything about your environment. "Which admins don't have MFA?" "Show me everyone with access to Salesforce who isn't in Okta." "What changed since yesterday?" Powered by Claude.
 
