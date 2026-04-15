@@ -44,14 +44,19 @@ Thalian connects your identity providers, SaaS applications, device managers, HR
 |----------|------|-------|-------------|
 | Microsoft Intune | ✅ | ✅ | ✅ Enroll device |
 | Jamf Pro | ✅ | ✅ | ✅ Enroll device |
-| Kandji | ✅ | ✅ | ✅ Enroll device |
+| Iru (formerly Kandji) | ✅ | ✅ | ✅ Enroll device |
 | Hexnode | ✅ | ✅ | ✅ Device actions |
+| Mosyle | ✅ | ✅ | ✅ Sync device, remote lock |
+| Fleet | ✅ | ✅ | ✅ Sync device, remote lock |
+| SimpleMDM | ✅ | ✅ | ✅ Sync device, remote lock |
+| Omnissa Workspace ONE | ✅ | ✅ | ✅ Sync device, remote lock |
+| Scalefusion | ✅ | ✅ | ✅ Device actions |
 
 ### Endpoint Security
 | Platform | Sync | Rules | Remediation |
 |----------|------|-------|-------------|
-| CrowdStrike Falcon | ✅ | ✅ Degraded sensor, contained host | ✅ Contain host, initiate scan |
-| SentinelOne | ✅ | ✅ Active threat, offline sensor | ✅ Agent actions |
+| CrowdStrike Falcon | ✅ | ✅ Degraded sensor, contained host, unpatched critical CVEs (Spotlight), vuln on admin device | ✅ Contain host, initiate scan |
+| SentinelOne | ✅ | ✅ Active threat, offline sensor, Ranger-discovered unmanaged devices | ✅ Agent actions |
 
 ### HR & People
 | Platform | Sync | Rules |
@@ -74,22 +79,24 @@ Thalian connects your identity providers, SaaS applications, device managers, HR
 | Slack Enterprise Grid | ✅ | ✅ Offboarded users, guests | ✅ Deactivate via Admin API |
 | Microsoft Teams | ✅ | ✅ Offboarded user activity | Notify only |
 | Microsoft Outlook | ✅ | ✅ Mailbox forwarding rules | — |
+| Zoom | ✅ | ✅ 5 rules: users not in IDP, admin not in IDP, SSO not enforced, offboarded users, stale seats | — |
 
 ### Collaboration
 | Platform | Sync | Rules | Remediation |
 |----------|------|-------|-------------|
 | SharePoint | ✅ | ✅ External sharing | — |
-| Confluence | ✅ | ✅ Suspended user access | — |
+| Confluence | ✅ | ✅ Suspended user access, space permission changes | — |
+| Box | ✅ | ✅ 6 rules: users not in IDP, offboarded users, external sharing, Shield alerts, departing employee mass downloads | — |
 
 ### Developer Tools
 | Platform | Sync | Rules | Remediation |
 |----------|------|-------|-------------|
-| GitHub | ✅ | ✅ Outside collaborators, org owners | ✅ Revoke access, remove org member |
+| GitHub | ✅ | ✅ 6 rules: outside collaborators, org owners not in IDP, Dependabot alerts, secret scanning alerts, push protection bypasses | ✅ Revoke access, remove org member |
 
 ### CRM
 | Platform | Sync | Rules | Remediation |
 |----------|------|-------|-------------|
-| Salesforce | ✅ | ✅ 9 rules: admin/user not in IDP, stale access, connected apps, API-only users, session security, data export, profile permissions | — |
+| Salesforce | ✅ | ✅ 11 rules: admin/user not in IDP, stale access, connected apps, API-only users, session security, data export, profile permissions, permission set escalation, session-based escalation | — |
 
 ### ITSM (ticket creation)
 Jira · ServiceNow · Freshservice · Zendesk
@@ -101,7 +108,7 @@ Cisco Meraki · Auvik
 
 ## Key capabilities
 
-**320 analysis rules** across 10 categories — identity security, access hygiene, shadow IT, device posture, license waste, behavioral anomaly, drift signals, compound risk, access risk, and configuration.
+**341 analysis rules** across 10 categories — identity security, access hygiene, shadow IT, device posture, license waste, behavioral anomaly, drift signals, compound risk, access risk, and finding correlation.
 
 **AI assistant** — Ask anything about your environment. "Which admins don't have MFA?" "Show me everyone with access to Salesforce who isn't in Okta." "What changed since yesterday?" Powered by Claude.
 
@@ -136,7 +143,7 @@ Cisco Meraki · Auvik
 | Auto-remediation | — | ✅ | ✅ |
 | Compliance mapping | — | ✅ | ✅ |
 | Access reviews | — | ✅ | ✅ |
-| Data retention | 7 days | 90 days | Unlimited |
+| Data retention | 7 days | 1 year | Unlimited |
 | SSO / SAML | — | — | ✅ |
 | IP allowlisting | — | — | ✅ |
 | Audit log (1 year) | — | — | ✅ |
