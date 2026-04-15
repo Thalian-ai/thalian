@@ -12,11 +12,27 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **Box** — Connect Box to detect IDP gaps, offboarded employees retaining file access, and external sharing activity. Cross-references with IDP data to surface departed employees who still have access to corporate files. 4 detection rules.
 
+- **GitHub secret scanning** — 2 new rules using GitHub Advanced Security data: unresolved secret scanning alerts (critical) and repeated push protection bypasses (high).
+
+- **CrowdStrike Spotlight** — 2 new rules: unpatched critical/high CVEs on managed devices, and high-severity vulnerabilities on admin-access devices.
+
+- **Entra PIM activation monitoring** — 2 new rules: PIM role activated without justification, and PIM activation outside business hours.
+
+- **Okta high-risk signin** — 1 new rule fires on completed sign-ins flagged as high risk by Okta's risk engine.
+
+- **Box Shield + departing employee downloads** — 2 new rules: unresolved Box Shield threat alerts, and mass file downloads by offboarded employees.
+
+- **Salesforce permission set escalation** — 2 new rules: admin-equivalent permission set assignment for non-admin users, and active session-based permission escalation.
+
+- **SentinelOne Ranger** — 1 new rule: unmanaged network devices discovered by Ranger that lack a SentinelOne agent.
+
+- **Confluence + Jira audit rules** — 2 new rules: space permission changes in Confluence and permission scheme changes in Jira.
+
 ### New Features
 
 - **Cross-platform brute-force detection** — Detects credential stuffing attacks by correlating failed login events across identity providers and SaaS apps. Fires when multiple IPs attempt repeated failed logins against the same account. Escalates when the same email shows failures on both the IDP and downstream SaaS platforms — a coordinated attack no single tool can see.
 
-- **320 detection rules** — The analysis engine now runs 320 rules (up from 173 in mid-March), covering identity security, access hygiene, device posture, behavioral anomalies, shadow IT, license waste, compound cross-platform risks, and drift signals.
+- **341 detection rules** — The analysis engine now runs 341 rules (up from 173 in mid-March), covering identity security, access hygiene, device posture, behavioral anomalies, shadow IT, license waste, compound cross-platform risks, and drift signals.
 
 - **Cross-platform compound rules** — 14 new rules that require data from 3+ connected platforms to fire — findings that no single tool can surface.
 
@@ -35,6 +51,22 @@ Notable changes, new features, and fixes for the Thalian platform.
 - **Access review bulk decisions + overdue reminders** — Bulk approve/revoke in access review campaigns. Overdue reminder emails sent automatically to reviewers.
 
 - **Trial extension + compliance preview** — Free-tier users can self-serve a trial extension. Compliance page visible in preview mode for free users.
+
+- **Security Posture Timeline** — New History page (**Reports → Timeline** or the dashboard "Monitoring since" badge) shows posture score over time, MFA coverage trend, compliance rate, and a narrative event log of grade shifts, MFA drops, new integrations, and remediation milestones.
+
+- **Integration Coverage Widget** — Dashboard now shows a 6-category coverage bar (Identity, Endpoint, HR, Security, Cloud, Comms) with per-category status dots and a CTA for the highest-priority gap.
+
+- **MCP server + API Keys** — Query your Thalian workspace from Claude Code using the Model Context Protocol. Generate an API key in **Settings → API Keys** and use six available tools: `get_risk_score`, `list_findings`, `lookup_identity`, `get_integrations`, `get_posture_summary`, and `trigger_sync`. API keys are workspace-scoped and read-only.
+
+- **Remediation playbooks** — Multi-step automated response sequences on the Policies page. Build ordered playbooks (e.g., "Offboard terminated employee") that run across platforms with per-step auto-execute or approval controls. Available on Pro and Enterprise.
+
+- **PDF evidence export for access reviews** — Access review campaigns now include a PDF export of reviewer decisions, timestamps, and entity details for audit documentation.
+
+- **Compliance Trend tab** — New trend view on the Compliance page showing control pass rate over time, rule coverage, and open finding counts by framework.
+
+- **In-app service status banner** — Dismissible banner appears during active incidents or service degradations.
+
+- **Free plan identity usage bar** — Free plan workspaces now see a live usage bar showing monitored identities vs. the plan limit, with a clear upgrade path.
 
 ### Improvements
 
@@ -55,6 +87,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 - **Blast radius orbit visualization** — Interactive orbit diagram replaces flat list on entity detail blast radius view
 - **Behavioral baseline accuracy** — Directory login events excluded from baselines when a dedicated IDP is connected
 - **Finding category consolidation** — "Configuration" category folded into "Access Risk" and "Identity Security"
+- **Free plan identity usage bar** — Live usage bar showing monitored identities vs. plan limit with upgrade path
+- **Pro data retention** — Extended from 90 days to 1 year for all workspace data and audit logs
 
 ### Fixes
 
@@ -77,12 +111,19 @@ Notable changes, new features, and fixes for the Thalian platform.
 - Fixed device page managed/unmanaged tab split — now a single unified view
 - Fixed behavioral baseline suppression scope applying too broadly
 - Downgraded `suspicious_programmatic_login` from high to medium severity
+- Fixed Google OAuth WebViews warning
+- Fixed billing flow — plan gate incorrectly blocking some Pro actions
+- Fixed approval request emails double-sending
 
 ### Security
 
 - **npm supply chain hardening** — In response to the March 30 Axios npm supply chain attack (CVE pending, attributed to North Korean threat actor UNC1069), we audited all dependencies and confirmed Thalian is not affected — axios is not in our dependency tree. We've additionally hardened our build pipeline: npm audit now blocks deployments on high-severity findings, postinstall scripts from transitive dependencies are disabled by default, all dependency versions are pinned exactly, and lockfile integrity validation has been added to CI.
 
 - **AI chat prompt injection hardening** — Topic-scoping guardrails added to the AI assistant to prevent prompt injection and constrain responses to IT security topics.
+
+- **RBAC audit** — Closed role gating gaps across integration management, workspace settings, billing actions, and agentic remediation approvals. No data was exposed.
+
+- **Workspace ONE vendor reference** — Updated references from "VMware Workspace ONE" to "Omnissa Workspace ONE" following the acquisition and rebrand.
 
 ---
 
