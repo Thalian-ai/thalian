@@ -68,6 +68,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **Free plan identity usage bar** — Free plan workspaces now see a live usage bar showing monitored identities vs. the plan limit, with a clear upgrade path.
 
+- **390 detection rules** — +40 new platform-depth rules for Intune, Jamf, Fleet, Workspace ONE, Iru, Workday, Microsoft 365 (Teams/SharePoint/Outlook), JumpCloud, and OneLogin. Highlights: non-compliant Intune admin with SaaS access, Fleet CVE + sensitive-app owner, Workday contingent worker with permanent-employee access, Teams offboarded user still a guest, SharePoint anonymous link policy open, Outlook external mailbox delegation, MDM × IDP compound rules (unmanaged device with IDP SSO access, terminated device still enrolled, BYOD owner with admin entitlements), JumpCloud/OneLogin MFA and policy coverage gaps. No new integrations required — all rules fire on existing synced data.
+
 ### Improvements
 
 - **Remediation action buttons** across all finding types
