@@ -12,6 +12,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **Box** — Connect Box to detect IDP gaps, offboarded employees retaining file access, and external sharing activity. Cross-references with IDP data to surface departed employees who still have access to corporate files. 4 detection rules.
 
+- **GitLab** — Connect a GitLab group via Group Access Token for developer access intelligence. Syncs members, projects, deploy keys, and group tokens. Works with GitLab.com and self-hosted. 8 detection rules including Maintainer/Owner not in IDP (critical), MFA gaps, external member access, write deploy keys, non-expiring group tokens, offboarding gaps, and stale members.
+
 - **GitHub secret scanning** — 2 new rules using GitHub Advanced Security data: unresolved secret scanning alerts (critical) and repeated push protection bypasses (high).
 
 - **CrowdStrike Spotlight** — 2 new rules: unpatched critical/high CVEs on managed devices, and high-severity vulnerabilities on admin-access devices.
