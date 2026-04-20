@@ -74,6 +74,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ### Improvements
 
+- **Webhook destination picker** — Two-section picker (Workflow Automation: Workato, Zapier, n8n, Gumloop, Make; SIEM & Observability: Datadog, Splunk, Elastic, Panther, Sumo Logic) with per-destination setup hints
+- **Webhook event improvements** — `finding_detected` now fires only for new findings (not all open findings every run); new `finding_resolved` event when a condition clears; `analysis_completed` gains `new_findings_count`; `finding_detected` payload enriched with `finding_id`, `action_type`, `source_integrations`
 - **Remediation action buttons** across all finding types
 - **Application sanctions** directly from the Applications page
 - **Finding deduplication** — actioned findings no longer re-created on next analysis
