@@ -8,6 +8,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ### Integrations
 
+- **Datadog** — Connect Datadog with an API Key + Application Key. Thalian syncs users and role assignments to detect Datadog admins with no corporate identity (critical), admin accounts without MFA (when no SSO is in use), standard users outside IDP lifecycle controls, and offboarded employees who retain full infrastructure visibility. 4 detection rules.
+
 - **Zoom** — Connect your Zoom organization to detect users and admins not in your corporate IDP, SSO enforcement gaps, offboarded employees with active Zoom accounts, and stale unused seats. 5 detection rules.
 
 - **Box** — Connect Box to detect IDP gaps, offboarded employees retaining file access, and external sharing activity. Cross-references with IDP data to surface departed employees who still have access to corporate files. 4 detection rules.
