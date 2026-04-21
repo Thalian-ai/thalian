@@ -76,6 +76,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ### Improvements
 
+- **Workspace risk score rebuilt** — Linear, CVSS-aligned formula replaces sigmoid curve that saturated at high risk levels and caused all Recommended Actions point deltas to show ±0. Each finding now produces a proportional, non-zero score movement. Cost-only findings (license waste) and metadata-noise rules excluded from the workspace score. Six rules reclassified from low to medium: Okta factor enrollment optional, Okta network zone bypass, Okta ThreatInsight disabled, Entra Security Defaults disabled, GitHub default branch protection missing, SharePoint external sharing activity.
+
 - **Webhook destination picker** — Two-section picker (Workflow Automation: Workato, Zapier, n8n, Gumloop, Make; SIEM & Observability: Datadog, Splunk, Elastic, Panther, Sumo Logic) with per-destination setup hints
 - **Webhook event improvements** — `finding_detected` now fires only for new findings (not all open findings every run); new `finding_resolved` event when a condition clears; `analysis_completed` gains `new_findings_count`; `finding_detected` payload enriched with `finding_id`, `action_type`, `source_integrations`
 - **Remediation action buttons** across all finding types
