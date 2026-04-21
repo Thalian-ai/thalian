@@ -103,6 +103,7 @@ Notable changes, new features, and fixes for the Thalian platform.
 ### Fixes
 
 - **SSO finding accuracy for Google Workspace-only environments** — SSO findings now correctly surface ungoverned OAuth grants (not "SSO bypass") when Google Workspace is the only IDP. Titles, descriptions, and remediation guidance updated.
+- **SSO finding accuracy — Google-only ratio and payload corrections** — Follow-up: `sso::high_direct_auth_ratio` now requires a majority threshold before firing; entity payloads for Google-only paths corrected to report `oauth_count` instead of `direct_count: 0`.
 - Findings suppression after remediation
 - Remediation denied actions no longer resurface
 - Reports sparkline accuracy
