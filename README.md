@@ -38,6 +38,7 @@ Thalian connects your identity providers, SaaS applications, device managers, HR
 | Google Workspace | ✅ | ✅ | ✅ Suspend, force password change, revoke OAuth token, revoke sessions, block app, remove admin role, revoke license, remove from group, rotate credentials |
 | JumpCloud | ✅ | ✅ | ✅ Suspend, remove admin role, remove from group |
 | OneLogin | ✅ | ✅ | ✅ Suspend, force password change, revoke sessions, force MFA enroll, remove admin role |
+| PingOne | ✅ | ✅ 3 rules: admin without MFA, user not in IDP, offboarded user active | — |
 
 ### Device Management
 | Platform | Sync | Rules | Remediation |
@@ -92,6 +93,8 @@ Thalian connects your identity providers, SaaS applications, device managers, HR
 | Platform | Sync | Rules | Remediation |
 |----------|------|-------|-------------|
 | GitHub | ✅ | ✅ 6 rules: outside collaborators, org owners not in IDP, Dependabot alerts, secret scanning alerts, push protection bypasses | ✅ Revoke access, remove org member |
+| GitLab | ✅ | ✅ 8 rules: admin/maintainer without MFA, members not in IDP, external members with elevated access, write deploy keys, non-expiring group tokens, offboarded users, stale members | — |
+| Datadog | ✅ | ✅ 4 rules: admin not in IDP, admin without MFA, user not in IDP, offboarded user active | — |
 
 ### CRM
 | Platform | Sync | Rules | Remediation |
@@ -108,7 +111,7 @@ Cisco Meraki · Auvik
 
 ## Key capabilities
 
-**341 analysis rules** across 10 categories — identity security, access hygiene, shadow IT, device posture, license waste, behavioral anomaly, drift signals, compound risk, access risk, and finding correlation.
+**400+ analysis rules** across 10 categories — identity security, access hygiene, shadow IT, device posture, license waste, behavioral anomaly, drift signals, compound risk, access risk, and finding correlation.
 
 **AI assistant** — Ask anything about your environment. "Which admins don't have MFA?" "Show me everyone with access to Salesforce who isn't in Okta." "What changed since yesterday?" Powered by Claude.
 
