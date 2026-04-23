@@ -6,6 +6,10 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ## April 2026
 
+### Improvements
+
+- **Bulk app policy actions** — Select multiple apps on the Applications page and approve, flag, or block them in one action. Floating action bar with Select all shortcut. Available to admins and security roles.
+
 ### Integrations
 
 - **Datadog** — Connect Datadog with an API Key + Application Key. Thalian syncs users and role assignments to detect Datadog admins with no corporate identity (critical), admin accounts without MFA (when no SSO is in use), standard users outside IDP lifecycle controls, and offboarded employees who retain full infrastructure visibility. 4 detection rules.
