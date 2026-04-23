@@ -70,7 +70,7 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **PDF evidence export for access reviews** — Access review campaigns now include a PDF export of reviewer decisions, timestamps, and entity details for audit documentation.
 
-- **Compliance Trend tab** — New trend view on the Compliance page showing control pass rate over time, rule coverage, and open finding counts by framework.
+- **Compliance Trend tab** — The trend chart now tracks SOC 2 and ISO 27001 compliance scores over time. Scores are computed each analysis run from live open findings mapped to each framework's controls, then stored in posture history so the chart shows real compliance trajectory. Historical data backfilled from existing finding timestamps.
 
 - **In-app service status banner** — Dismissible banner appears during active incidents or service degradations.
 
