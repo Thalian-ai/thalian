@@ -6,6 +6,38 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ## April 2026
 
+### New Features
+
+- **Attack Surface Map** — New interactive SVG graph in Causality Insights connects identity entry points, attack vectors, and at-risk platforms in a single view. Root cause and systemic pattern cards pre-fill the AI assistant on click.
+
+- **Attack chain redesign** — Attack chain card rebuilt as a structured diagram: entry point → animated attack vector node → platform fan with intensity-colored ticks proportional to entitlement exposure.
+
+- **Login geolocation** — Finding detail panels now show city, region, country, and ISP for login context. Processed in-house via MaxMind GeoLite2 on Cloudflare R2 — no customer IP sent to third parties.
+
+- **Grouped findings** — 8 high-volume rules now emit one grouped finding instead of one per identity. Severity scales with scope (e.g., 50%+ MFA gap escalates to critical). Affects: active user with no device, admin without MFA, stale admin, MFA coverage gap, password-only auth, cross-platform privilege drift, cross-platform offboarding gap, cross-platform MFA gap.
+
+- **Finding consolidation** — Shadow IT sensitive-scope and broad OAuth write-access findings consolidated into one finding per workspace (5+ apps = critical). GitHub org owner + GCP owner/member not-in-IDP findings similarly grouped.
+
+- **Per-admin OAuth revoke** — Admin excessive OAuth findings are now one per admin with per-app inline revoke. No stored OAuth client ID required.
+
+- **Custom entity names in finding titles** — 11 per-entity rules now include the specific person's name or email in the finding title for faster triage.
+
+- **Slack App Directory** — Thalian is now listed in the Slack App Directory. Install directly from Slack via `app.thalian.ai/api/slack-install`.
+
+### Security
+
+- **HMAC key isolation** — Webhook and AI chat action HMAC keys domain-separated via HKDF.
+- **Single-use action tokens** — HMAC confirmation tokens for AI-initiated remediation are consumed on first use.
+- **AI chat tool gating** — `trigger_sync` requires `manage_integrations` role; `run_analysis` requires `analyze` role.
+
+### Fixes
+
+- **Automation policy matching** — Automation was silently firing on wrong findings when policies had an empty rule ID list. Fixed with an explicit `match_mode` column. Check the Policies page — violation counts may change.
+- **Fleet encryption and compliance** — Encryption and compliance were showing "Unknown" for Fleet devices. Fixed by fetching per-host detail endpoints.
+- **Device OS column** — Now shows OS version string, not raw platform identifier.
+- **AI chat truncation** — Max tokens raised to 4096 with pagination for long responses.
+- **OAuth finding "Authorized by"** — Now correctly aggregates users across all apps in a consolidated finding.
+
 ### Improvements
 
 - **Bulk app policy actions** — Select multiple apps on the Applications page and approve, flag, or block them in one action. Floating action bar with Select all shortcut. Available to admins and security roles.
