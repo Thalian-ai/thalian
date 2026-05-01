@@ -4,6 +4,16 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ---
 
+## May 2026
+
+### Improvements
+
+- **AI chat grouped finding context** — The AI assistant now surfaces all affected user emails within grouped findings, enabling targeted remediation directly from chat. Previously, grouped findings (suspended users in groups, admin-without-MFA, stale admins) showed no specific identities to the assistant — it couldn't name the user or act on them.
+
+- **`remove_admin_role` via AI chat** — New confirmation-gated action in the AI assistant for removing admin/privileged roles from a specific user across all connected IDPs (Okta, Google Workspace, Entra ID, JumpCloud, OneLogin). Account stays active; only elevated roles are removed.
+
+---
+
 ## April 2026
 
 ### New Features
