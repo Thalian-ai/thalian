@@ -6,6 +6,10 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ## May 2026
 
+### New Features
+
+- **Okta AI agent identity detection** — Thalian now syncs and governs AI agent principals from Okta's AI Agents feature as first-class non-human identities (NHIs). AI agents appear in Identities alongside service accounts, are excluded from MFA and off-hours anomaly metrics (agents run 24/7 by design), and are covered by two new findings: **Possible AI agent unclassified** (flags service accounts that look like agents but haven't been formally classified) and **AI agent count growing** (drift signal when agent count grows faster than headcount). Both findings map to SOC 2 CC6.1/CC6.2 and ISO 27001 A.5.15/A.5.18.
+
 ### Improvements
 
 - **AI chat grouped finding context** — The AI assistant now surfaces all affected user emails within grouped findings, enabling targeted remediation directly from chat. Previously, grouped findings (suspended users in groups, admin-without-MFA, stale admins) showed no specific identities to the assistant — it couldn't name the user or act on them.
