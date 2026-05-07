@@ -12,6 +12,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ### Improvements
 
+- **MCP server — action tools (v1.1.0)** — The MCP server at `mcp.thalian.ai` now supports six new tools for write-scope API keys. Query tools: `list_rules` (all active detection rules with severity and category), `check_app_policy` (look up whether an app is sanctioned, unauthorized, or blocked). Action tools: `snooze_finding` (snooze for 1–90 days), `dismiss_finding`, `remediate_finding` (queue a remediation action for admin approval), and `set_app_policy` (sanctioned / unauthorized / blocked / clear). All action tools require a write-scope API key and are recorded in the audit log. See [MCP Server](https://docs.thalian.ai/mcp-server) for setup details.
+
 - **AI chat grouped finding context** — The AI assistant now surfaces all affected user emails within grouped findings, enabling targeted remediation directly from chat. Previously, grouped findings (suspended users in groups, admin-without-MFA, stale admins) showed no specific identities to the assistant — it couldn't name the user or act on them.
 
 - **`remove_admin_role` via AI chat** — New confirmation-gated action in the AI assistant for removing admin/privileged roles from a specific user across all connected IDPs (Okta, Google Workspace, Entra ID, JumpCloud, OneLogin). Account stays active; only elevated roles are removed.
