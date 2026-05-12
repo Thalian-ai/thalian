@@ -12,9 +12,13 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **NIST CSF 2.0 compliance framework** — Thalian's detection rules are now mapped to NIST Cybersecurity Framework 2.0. Six controls surface on the Compliance page: **PR.AA-01** (AI agent and NHI lifecycle governance), **PR.AA-03** (authentication strength), **PR.AA-05** (access reviews covering users, services, and hardware), **ID.AM-01** (asset inventory), **ID.AM-05** (resource criticality), and **DE.CM-03** (activity monitoring). NIST CSF 2.0 appears as a third tab on the Compliance page alongside SOC 2 and ISO 27001.
 
+- **ISO 42001 compliance framework** — Thalian now maps detection rules to ISO/IEC 42001:2023, the first international AI management system standard. Seven Annex A controls surface on the Compliance page: **A.4.2** (AI resource documentation), **A.6.2.2** (AI system requirements and specification), **A.6.2.6** (AI system operation and monitoring), **A.6.2.8** (AI system event logs), **A.7.3** (data acquired by AI), **A.9.2** (responsible use processes including offboarding lifecycle), and **A.10.3** (third-party AI suppliers). Appears as a fourth tab on the Compliance page.
+
 - **NHI-only access review scopes** — Access review campaigns now support **Non-human identities only** and **AI agents only** scope filters, so SOC 2 CC6.3 / NIST CSF 2.0 PR.AA-05 review obligations actually cover the service accounts and agents that human-identity-focused certifications miss.
 
 ### Improvements
+
+- **Compliance Trend chart plots all four frameworks** — The Compliance Trend chart now plots SOC 2, ISO 27001, NIST CSF 2.0, and ISO 42001 scores side-by-side over time. Each framework writes its own score column to `drift_snapshots` on every analysis run; historical gaps appear as line breaks until enough post-deploy snapshots accumulate.
 
 - **MCP server — action tools (v1.1.0)** — The MCP server at `mcp.thalian.ai` now supports six new tools for write-scope API keys. Query tools: `list_rules` (all active detection rules with severity and category), `check_app_policy` (look up whether an app is sanctioned, unauthorized, or blocked). Action tools: `snooze_finding` (snooze for 1–90 days), `dismiss_finding`, `remediate_finding` (queue a remediation action for admin approval), and `set_app_policy` (sanctioned / unauthorized / blocked / clear). All action tools require a write-scope API key and are recorded in the audit log. See [MCP Server](https://docs.thalian.ai/mcp-server) for setup details.
 
