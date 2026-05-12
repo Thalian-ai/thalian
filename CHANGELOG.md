@@ -22,6 +22,10 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **`remove_admin_role` via AI chat** — New confirmation-gated action in the AI assistant for removing admin/privileged roles from a specific user across all connected IDPs (Okta, Google Workspace, Entra ID, JumpCloud, OneLogin). Account stays active; only elevated roles are removed.
 
+### Fixes
+
+- **Compliance PDF export now includes all controls** — The PDF download on the Compliance page was capturing only the score summary (compliance percentage, passing count, failing count) and leaving the controls table blank. The export now produces a complete report including the full controls table regardless of any search or filter currently applied in the UI.
+
 ---
 
 ## April 2026
