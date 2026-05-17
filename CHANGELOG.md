@@ -26,6 +26,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **`remove_admin_role` via AI chat** — New confirmation-gated action in the AI assistant for removing admin/privileged roles from a specific user across all connected IDPs (Okta, Google Workspace, Entra ID, JumpCloud, OneLogin). Account stays active; only elevated roles are removed.
 
+- **Compliance control mapping expansion** — SOC 2, ISO 27001, NIST CSF 2.0, and ISO 42001 control mappings now cover nearly twice as many detection rules. Key additions: access review evidence rules (`access_review::overdue`, `access_review::rubber_stamped`) mapped to CC6.8; all 15 `ai_governance::*` rules mapped to ISO 42001 and NIST CSF 2.0 for the first time; terminated employee compound rules expanded across CC6.7 and A.6.5; cloud IAM privilege rules (AWS, GCP, Azure) mapped to CC6.5/CC9.1/A.8.2; audit trail gap rules added to CC8.1 and A.8.15. All 203 mapped rule IDs validated against the live rule set with zero broken references.
+
 ### Fixes
 
 - **Compliance PDF export now includes all controls** — The PDF download on the Compliance page was capturing only the score summary (compliance percentage, passing count, failing count) and leaving the controls table blank. The export now produces a complete report including the full controls table regardless of any search or filter currently applied in the UI.
