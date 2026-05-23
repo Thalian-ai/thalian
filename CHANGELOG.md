@@ -16,6 +16,16 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **NHI-only access review scopes** — Access review campaigns now support **Non-human identities only** and **AI agents only** scope filters, so SOC 2 CC6.3 / NIST CSF 2.0 PR.AA-05 review obligations actually cover the service accounts and agents that human-identity-focused certifications miss.
 
+- **Workspace AI memory.** Thalian's AI now remembers context across chat sessions. Save org context, accepted risks, dismissed patterns, integration notes, and remediation preferences via the chat assistant, and Claude reads them on every future conversation, remediation plan, and causality analysis. Every save and delete is recorded in the audit log.
+
+- **Publish policies to Confluence, SharePoint, or Box.** Approved policy playbooks now publish directly to your team's collaboration platform. Three new endpoints handle create-or-update semantics. Finding detail panels render a "Team runbook" link when a relevant policy has been published.
+
+- **First-sync activation gate.** New workspaces now connect a second integration before findings render. The single-integration experience showed mostly empty cross-platform rules and undersold what Thalian actually does.
+
+- **Interactive column sorting.** Identities, Devices, and Applications pages sort by any column header click. Ascending, descending, and reset states.
+
+- **MCP server: OAuth 2.0 for the Claude.ai connector.** The MCP server at `mcp.thalian.ai` now exposes a full OAuth 2.0 surface. `client_credentials` grant for the Claude.ai connector and `authorization_code` grant with PKCE for human flows. RFC 9728 protected-resource metadata endpoint. Tokens conform to the RFC 9068 access-token JWT profile.
+
 ### Improvements
 
 - **Compliance Trend chart plots all four frameworks** — The Compliance Trend chart now plots SOC 2, ISO 27001, NIST CSF 2.0, and ISO 42001 scores side-by-side over time. Each framework writes its own score column to `drift_snapshots` on every analysis run; historical gaps appear as line breaks until enough post-deploy snapshots accumulate.
@@ -28,9 +38,23 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **Compliance control mapping expansion** — SOC 2, ISO 27001, NIST CSF 2.0, and ISO 42001 control mappings now cover nearly twice as many detection rules. Key additions: access review evidence rules (`access_review::overdue`, `access_review::rubber_stamped`) mapped to CC6.8; all 15 `ai_governance::*` rules mapped to ISO 42001 and NIST CSF 2.0 for the first time; terminated employee compound rules expanded across CC6.7 and A.6.5; cloud IAM privilege rules (AWS, GCP, Azure) mapped to CC6.5/CC9.1/A.8.2; audit trail gap rules added to CC8.1 and A.8.15. All 203 mapped rule IDs validated against the live rule set with zero broken references.
 
+- **Seven more rules emit grouped findings.** Device staleness (EDR agent outdated, OS updates overdue), password policy gaps (password-never-expires, stale passwords), Slack and Azure users without IDP coverage, and executive direct-authentication bypasses previously emitted one finding per affected entity. They now emit a single grouped finding with the full affected entity list inside. Auto-resolve handles the migration on first analysis run after deploy.
+
+- **ITSM ticket linking and auto-close.** Remediation actions that create Jira, ServiceNow, Freshservice, or Zendesk tickets now return a clickable ticket URL in the action log. When the underlying finding is resolved, Thalian automatically closes the linked ticket.
+
+- **Login event times in your local timezone.** Off-hours login findings now show the viewer's local timezone alongside the UTC stamp (e.g. "21:00 UTC (1:00 PM PDT)").
+
+- **Dynamic identity-ceiling scoring.** Workspace risk score formula now scales with identity count rather than saturating at a fixed maximum. Scenario Builder deltas no longer show misleading "no improvement" results on workspaces with many findings.
+
+- **Operational coverage.** Datadog added to the offboarding cascade so terminated identities flag for Datadog suspension alongside Okta, Entra ID, Google Workspace, and the other IDPs. The "AI agent count growing" rule title aligned to its landing-page name.
+
 ### Fixes
 
 - **Compliance PDF export now includes all controls** — The PDF download on the Compliance page was capturing only the score summary (compliance percentage, passing count, failing count) and leaving the controls table blank. The export now produces a complete report including the full controls table regardless of any search or filter currently applied in the UI.
+
+- **Impact Analysis Scenario Builder delta sync.** Scenario Builder cumulative delta now agrees with the Recommended Actions estimate. Two fallback paths in the score calculation were treating saturated scores as neutral instead of computing the true delta, producing misleading results on workspaces with many findings.
+
+- **Multiple security and observability hardening.** Workspace isolation closed across all remediation paths. Slack approve/snooze flow closed four downstream bugs. Single-use guard added to AI-chat HMAC confirmation tokens. SSRF guard added to notification webhook URLs. Error message disclosure fixed across five endpoints. Approval TOCTOU race condition closed. PII-classified signup metadata moved from localStorage to sessionStorage. Five Sentry-flagged frontend bugs resolved. Framework score columns aligned to numeric type matching live DB. The "Terminated employee still active" finding mapped to SOC 2 CC6.7 and ISO 27001 A.6.5.
 
 ---
 
