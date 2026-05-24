@@ -54,6 +54,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **Operational coverage.** Datadog added to the offboarding cascade so terminated identities flag for Datadog suspension alongside Okta, Entra ID, Google Workspace, and the other IDPs. The "AI agent count growing" rule title aligned to its landing-page name.
 
+- **LiteLLM personal-email admin detection.** The `litellm_personal_email_admin` rule fires when a LiteLLM `proxy_admin` is registered on a personal email domain, closing the detection gap that previously covered only Anthropic and OpenAI. The sync handler now pulls the user roster from `/user/list` so each identity carries its role; the existing `/user/daily/activity` source doesn't expose role data. Older LiteLLM gateways (before v1.50) and master keys without admin scope still sync identities from activity records but skip the role enrichment without failing. Severity is high for `proxy_admin`, medium for other roles. Maps to SOC 2 CC6.1/CC6.2, ISO 27001 A.5.16/A.5.18, NIST CSF 2.0 PR.AA-01, and ISO 42001 A.6.2.2.
+
 ### Fixes
 
 - **Compliance PDF export now includes all controls**. The PDF download on the Compliance page was capturing only the score summary (compliance percentage, passing count, failing count) and leaving the controls table blank. The export now produces a complete report including the full controls table regardless of any search or filter currently applied in the UI.
