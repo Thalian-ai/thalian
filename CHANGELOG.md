@@ -30,6 +30,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ### Improvements
 
+- **Slack bot and app integrations surfaced as non-human identities**. Thalian now inventories every bot and app installed in your Slack workspace instead of skipping them. Each appears as a service account on the Identities page, so you can see which automations have access to your channels. A new finding flags workspaces with five or more active bot integrations that have never been reviewed. Bots whose names match known AI agent frameworks (Cursor, Gumloop, CrewAI, n8n, and others) are surfaced separately under AI governance for classification. Bot identities never count toward your plan identity limit.
+
 - **Audit log hash chain and in-product verification**. Every audit log row now carries a per-workspace SHA-256 hash chain — each row is cryptographically linked to its predecessor so any inserted, reordered, or silently deleted row is detectable. A `verify_audit_chain` database function walks the chain and confirms integrity; results appear as a live status panel on the Compliance page audit log tab (status badge, rows verified, link breaks, hash breaks, chain tip hash, seal root). Enhances SOC 2 CC8.1, ISO 27001 A.8.15, and ISO 42001 A.6.2.8 evidence quality.
 
 - **Audit log JSONL chain export** (Enterprise). A new **Download Chain Export** button on the Compliance page exports the full audit log as a JSONL file with chain provenance metadata embedded (`thalian-audit-export/1` schema). Includes genesis hash, chain tip hash, pre-cutover seal root, and cutover timestamp. Designed for offline verification with the public Python verifier at `tools/verify-audit-export.py`. Every export is audit-logged.
@@ -60,6 +62,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ### Fixes
 
+- **License overrides no longer auto-classify apps as Approved.** Uploading a contract for an app (which records license cost, tier, and renewal metadata) was pinning that app into the Approved tab on the Applications page regardless of policy state, and the Revert button had no visible effect because it only clears the policy, not the license override. License data is contract and cost tracking, not a policy approval, so an app with a license override now falls through to Unsanctioned unless it is explicitly sanctioned, SSO-provisioned, or stamped sanctioned by sync data. Contract data is preserved and continues to drive the Source, Monthly Cost, Tier, and Renewal columns.
+
 - **Compliance PDF export now includes all controls**. The PDF download on the Compliance page was capturing only the score summary (compliance percentage, passing count, failing count) and leaving the controls table blank. The export now produces a complete report including the full controls table regardless of any search or filter currently applied in the UI.
 
 - **Impact Analysis Scenario Builder delta sync.** Scenario Builder cumulative delta now agrees with the Recommended Actions estimate. Two fallback paths in the score calculation were treating saturated scores as neutral instead of computing the true delta, producing misleading results on workspaces with many findings.
@@ -67,6 +71,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 - **Multiple security and observability hardening.** Workspace isolation closed across all remediation paths. Slack approve/snooze flow closed four downstream bugs. Single-use guard added to AI-chat HMAC confirmation tokens. SSRF guard added to notification webhook URLs. Error message disclosure fixed across five endpoints. Approval TOCTOU race condition closed. PII-classified signup metadata moved from localStorage to sessionStorage. Five Sentry-flagged frontend bugs resolved. Framework score columns aligned to numeric type matching live DB. The "Terminated employee still active" finding mapped to SOC 2 CC6.7 and ISO 27001 A.6.5.
 
 - **AI provider integrations validate admin keys at save time.** Anthropic, OpenAI, and LiteLLM connect attempts were accepting any non-empty key string and only surfacing the error on the first sync, typically as a 401 from the provider's organization usage endpoint. The connect modal now probes the same endpoint the sync handler uses and rejects the credential immediately with a specific error pointing you at the right type of key (Admin API Key from the provider's Console settings, not a regular API key) and where to create it. Hardening applied across every integration validator: probe timeout tightened from 30s to 10s so a slow upstream cannot consume the full request budget, and the shared SSRF blocklist expanded to cover Alibaba Cloud, Oracle Cloud, IPv6 link-local, and several AWS / GCP metadata aliases.
+
+- **Per-app findings now surface on the affected identity's card.** OAuth and entitlement findings that attribute users in their payload (rather than via a direct identity FK) now correctly appear on the Identities page for the users they affect. Two rules also now populate the identity FK directly when exactly one user resolves, making single-user app findings attributable without changing the finding key or type. The Applications page per-app view now indexes grouped findings by app UUID so per-app finding lists are complete.
 
 ---
 
