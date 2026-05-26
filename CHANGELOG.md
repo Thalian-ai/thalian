@@ -32,7 +32,7 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ### Improvements
 
-- **NEW badge on recent findings.** Findings that first appeared in the most recent analysis run now carry a teal **NEW** pill on the Findings page. The badge clears automatically once the next analysis run completes, so it always reflects "since the last sync" without a manual dismiss step. Reference timestamp matches the dashboard's *New since last sync* delta card, so both surfaces agree on what's new.
+- **NEW badge on recent findings.** Findings that first appeared since you last viewed the Findings page carry a teal **NEW** pill. The reference timestamp is per-user, kept in your browser's local storage and scoped to each workspace, and updates after you've spent 30 seconds on the page so a quick navigation does not reset the clock. On a first-ever visit, the badge falls back to the same reference the dashboard's *New since last sync* delta card uses (the previous analysis run's drift snapshot). Resolved and dismissed findings never carry the badge. Per-browser, not per-user across devices.
 
 - **AI spend spike detection refined.** The spend-spike rule now scales its noise floor to your organization's daily provider spend, so trivial-dollar 2x blips (`$0.12/day` jumping to `$0.26/day` was a "2.1x spike" with `$0.14` of actual movement) no longer fire as findings. Each spike is also attributed to the specific provider workspace where it happened, rather than rolled up into one aggregate finding for the entire provider account. Severity escalates to `high` at 5x the trailing 7-day average and stays `medium` for smaller jumps. Applies to Anthropic, OpenAI, and LiteLLM. Rule IDs and SOC 2 / NIST CSF 2.0 / ISO 42001 control mappings unchanged.
 
