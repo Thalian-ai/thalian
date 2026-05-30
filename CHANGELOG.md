@@ -96,6 +96,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **Disconnecting and removing an integration no longer leaves zombie findings.** Findings were being tagged with category aliases (`mdm`, `identity_provider`, `oauth`, ...) instead of the actual platform ID, so the integration-removal cleanup query never matched them when the last platform in a category was removed (for example, disconnecting and removing Fleet in a Fleet-only MDM environment left zombie findings with `data_source: "mdm"` that nothing could clean up). All findings now pass through a single normalization chokepoint at persist time that expands category aliases to real connected platform IDs — entity-first when available, category-wide otherwise. Unresolvable aliases are dropped. The integration-removal flow now also sweeps legacy alias-encoded rows, gated to only fire when removing the platform leaves its category with zero connected platforms. Sweep activity is recorded in the audit log under `orphaned_aliases_swept`.
 
+- **Notification deep-links repaired.** Outbound Slack, Microsoft Teams, email, and webhook alerts built deep-links to a `/risks` route that no longer exists (it was renamed to `/findings`), so clicking through dropped you on the dashboard catch-all instead of the specific finding. URLs now build through a centralized helper driven by `SITE_URL`, and per-finding deep-links carry the `?finding={uuid}` query param so the detail panel opens directly to the finding being notified.
+
 ---
 
 ## April 2026
