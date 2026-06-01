@@ -4,6 +4,14 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ---
 
+## June 2026
+
+### Fixes
+
+- **Crash on the Findings page for workspaces with AI agent findings fixed.** Navigating to `/findings` (or clicking "assign owners" from the dashboard) could hard-crash the page for any workspace where Thalian had detected AI agent or non-human identity findings. The crash was a temporal dead zone in the minified production bundle: Terser was reordering a memoized value in a way that made it inaccessible at render time. The fix replaces the direct dependency with a ref, which is immune to that reordering.
+
+---
+
 ## May 2026
 
 ### New Features
@@ -41,6 +49,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 - **MCP server: OAuth 2.0 for the Claude.ai connector.** The MCP server at `mcp.thalian.ai` now exposes a full OAuth 2.0 surface. `client_credentials` grant for the Claude.ai connector and `authorization_code` grant with PKCE for human flows. RFC 9728 protected-resource metadata endpoint. Tokens conform to the RFC 9068 access-token JWT profile.
 
 ### Improvements
+
+- **Interactive AI is now included on paid plans; credits meter only the autonomous lane.** AI credits have been reclassified so the metering line sits where the cost actually accrues. On **Pro**, interactive AI (chat, identity dossiers, causality analysis, remediation plans, and contract extraction) is now fully included with no metering, and your monthly credit allowance meters only the autonomous lane: agentic remediation that runs without a human in the loop. Pro includes 2,500 automation credits per month plus top-up packs when you need more. On **Free**, a single monthly pool of 300 credits covers all AI usage, interactive and automation alike. **Enterprise** stays unlimited. Your monthly allowance resets at the start of each billing period; purchased top-up packs roll over and never expire. Spend draws from the monthly allowance first, then from any purchased packs.
 
 - **Readable labels for unrecognized OAuth apps.** OAuth applications whose name is an opaque identifier — a bare Google client ID like `407408718192.apps.googleusercontent.com` or a raw GUID — no longer surface as an unreadable string. When Thalian can't resolve a vendor name and the app's scopes grant real access, the identity detail panel now shows a scope-derived label such as **Unrecognized app (email inbox, files (read/write))**, with the raw client ID demoted to a subtitle. The label is composed entirely from the app's actual OAuth scopes, so it tells you what the grant can reach even when the vendor is unknown. Apps with a recognized vendor keep their real name, and apps whose scopes grant only basic sign-in are left as-is. The label is computed at sync time and stored on the application, so it stays consistent across the Applications page, finding detail, and AI chat.
 
