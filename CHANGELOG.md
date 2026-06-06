@@ -14,6 +14,12 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **AI chat context pre-loading.** Opening the AI chat via a `?context_entity=` link automatically sends a context primer so the assistant is already scoped to the right identity, device, or application when you arrive. Entity detail panels and finding cards that link to chat use this parameter.
 
+- **AI Providers are a first-class integration category.** The Integration Library now has an **AI Providers** filter covering **Anthropic**, **OpenAI**, and **LiteLLM**, and the coverage panel tracks **AI Providers** as its own category. These providers were already supported -- they are now discoverable from the category filter and coverage map instead of only the full list.
+
+- **The Integration Library and connected list are easier to scan.** Category sections in the library are now collapsible -- the categories you have connected stay open by default and the rest collapse to a one-line header, with an **Expand all / Collapse all** toggle. Searching or picking a category shows everything. On the **Integrations** page, once you have connected eight or more tools the connected list groups them by category.
+
+- **Remediation Queue tab now shows in-progress actions.** When the Queue had no pending approvals or active workflows, it showed a blank page even though actions were actively running. The Queue now surfaces in-progress actions directly, and shows a "Queue is clear" empty state with a link to History when there is genuinely nothing actionable.
+
 ### Fixes
 
 - **Crash on the Findings page for workspaces with AI agent findings fixed.** Navigating to `/findings` (or clicking "assign owners" from the dashboard) could hard-crash the page for any workspace where Thalian had detected AI agent or non-human identity findings. The crash was a temporal dead zone in the minified production bundle: Terser was reordering a memoized value in a way that made it inaccessible at render time. The fix replaces the direct dependency with a ref, which is immune to that reordering.
