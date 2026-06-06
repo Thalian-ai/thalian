@@ -42,6 +42,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 - **Crash on the Findings page for workspaces with AI agent findings fixed.** Navigating to `/findings` (or clicking "assign owners" from the dashboard) could hard-crash the page for any workspace where Thalian had detected AI agent or non-human identity findings. The crash was a temporal dead zone in the minified production bundle: Terser was reordering a memoized value in a way that made it inaccessible at render time. The fix replaces the direct dependency with a ref, which is immune to that reordering.
 
+- **Named AI agents now route to the NHI remediation lane correctly.** AI agents with descriptive email prefixes (for example, `crewai-finance-bot@...` or `github-actions-deploy@...`) were incorrectly surfacing in the human identity remediation lane instead of the Non-human governance lane. Routing now joins against the identity type recorded during sync rather than relying solely on a prefix blocklist, so any identity classified as `ai_agent` or `service_account` lands in the correct lane regardless of email naming conventions.
+
 ---
 
 ## May 2026
