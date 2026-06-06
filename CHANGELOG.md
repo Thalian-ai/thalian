@@ -8,6 +8,16 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ### Improvements
 
+- **Non-human identity inventory is now first-class.** The **Inventory** page stat strip shows a dedicated **Non-human** tile with the current AI agent and service account count. The page headline adjusts when non-human identities dominate the workspace. A **Non-human first** sort option surfaces agents and service accounts at the top of the list regardless of name or risk score. The tab badge on the Non-human tab counts identities flagged as likely NHI but not yet classified, so the review queue is always visible.
+
+- **Remediation queue shows agent-aware action labels.** When a pending or in-progress action targets an AI agent or service account, the queue uses context-appropriate phrases: **Suspend agent**, **Revoke agent grant**, **Contain agent**. A small agent icon marks those rows so they stand out from human-identity actions.
+
+- **AI spend estimate shown on AI agent entities.** The entity detail panel for an Okta AI agent shows an **AI API spend** row in the Agent info section with a workspace-level benchmark-priced estimate labeled "Est." The Applications page **AI on your behalf** stat tile shows the same estimate below the count.
+
+- **Compliance page free-plan gate leads with AI governance frameworks.** The gate screen free-plan users see now previews NIST CSF 2.0 and ISO 42001 controls alongside SOC 2, with sample rows for **PR.AA-01** (identities and credentials) and **A.6.2.6** (AI system operation and monitoring). The call-to-action names all four frameworks and the current rule count (432+).
+
+- **Cross-platform join claim stated on compound findings.** The reveal shown after a second integration syncs now uses specialized copy for NHI and AI governance findings, naming the specific pair of systems that produced the insight. The compound-risk hero on the dashboard states the join claim directly.
+
 - **Navigation consolidated to a seven-item sidebar.** The left navigation collapses from twelve entries to a seven-item spine: **Overview**, **Findings**, **Inventory**, **Remediation**, **Compliance & posture**, **Integrations**, and **Settings**. Three parent pages group what used to be separate top-level routes. **Inventory** holds **People**, **Non-human**, **Applications**, and **Devices** as tabs, with the **Non-human** tab always present -- even on a brand-new workspace it shows what it catches: service accounts, tokens, OAuth grants, bots, and AI agents. **Remediation** gains a **Simulate** tab for before/after impact analysis, and **Compliance & posture** folds access reviews, policies, posture, and reports into tabs alongside controls. Every previous URL keeps working through a redirect, and bookmarks that carry tab, filter, or framework parameters resolve to the right place, so saved deeplinks and shared links continue to work.
 
 - **Cross-entity navigation.** Every identity, device, and application row in the inventory now carries a quick-navigate button that opens the Findings page pre-filtered to that entity's open findings. On the Applications page, the user-count chip links to the Identities page filtered to users of that application. The entity detail panel gains a **View all findings** link in the Findings section header. No manual filter setup required.
@@ -21,6 +31,8 @@ Notable changes, new features, and fixes for the Thalian platform.
 - **Remediation Queue tab now shows in-progress actions.** When the Queue had no pending approvals or active workflows, it showed a blank page even though actions were actively running. The Queue now surfaces in-progress actions directly, and shows a "Queue is clear" empty state with a link to History when there is genuinely nothing actionable.
 
 ### Fixes
+
+- **Compliance controls with no detection data no longer score as passing.** Controls mapped to rules that Thalian has not yet evaluated (because the required integration is not connected, or the rule produces no findings) previously appeared as green "Passing" and inflated the compliance score. Controls in that state now render as **Not monitored** and are excluded from the score calculation, so the percentage reflects actual coverage rather than assumed coverage.
 
 - **Crash on the Findings page for workspaces with AI agent findings fixed.** Navigating to `/findings` (or clicking "assign owners" from the dashboard) could hard-crash the page for any workspace where Thalian had detected AI agent or non-human identity findings. The crash was a temporal dead zone in the minified production bundle: Terser was reordering a memoized value in a way that made it inaccessible at render time. The fix replaces the direct dependency with a ref, which is immune to that reordering.
 
