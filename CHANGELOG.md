@@ -6,6 +6,12 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ## June 2026
 
+### New Features
+
+- **Cross-platform AI agent governance.** Every confirmed AI agent can now carry a **governance record** (declared purpose, authorized scope categories, autonomy level, business owner, review cadence, and a hard authorization expiry), set from its detail panel under **Inventory -> Non-human**. Thalian compares what each agent is authorized to do against what it actually does and flags the gaps: scope exceeded, behavioral drift against the agent's four-week baseline, expansion onto a new platform, expired authorization, overdue review, one agent acting on another (an unreviewed trust chain), and a confirmed agent showing human signals (stolen credential or a person hiding behind a service account). Each agent gets an auto-computed **risk tier** badge and a **least-privilege advisory** for authorized scopes it never uses, a **Platform legs** section links the same agent across platforms, and the causality view explains drift by correlating it against recent governance and configuration changes.
+
+- **Two new AI compliance frameworks: NIST AI RMF (GOVERN) and EU AI Act.** The **Compliance** page adds two AI-specific framework tabs alongside SOC 2, ISO 27001, NIST CSF 2.0, and ISO 42001. Agent governance findings map to NIST AI RMF GOVERN functions (1.1, 2.2, 2.4, 5.1) and EU AI Act articles (9, 10, 13, 14), and both score over time on the Compliance Trend chart.
+
 ### Improvements
 
 - **Non-human identity inventory is now first-class.** The **Inventory** page stat strip shows a dedicated **Non-human** tile with the current AI agent and service account count. The page headline adjusts when non-human identities dominate the workspace. A **Non-human first** sort option surfaces agents and service accounts at the top of the list regardless of name or risk score. The tab badge on the Non-human tab counts identities flagged as likely NHI but not yet classified, so the review queue is always visible.
