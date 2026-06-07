@@ -14,6 +14,20 @@ Notable changes, new features, and fixes for the Thalian platform.
 
 ### Improvements
 
+- **Agent Inventory filter controls replaced with pill toggles.** The autonomy, authorization status, and scope-status dropdowns on the AI Agents view are now inline pill toggle groups. A compact **⚑ Drift** shortcut jumps directly to the drifted-scope subset, and rows with active scope drift show an inline amber chip.
+
+- **Insights tab shows a count badge.** The Findings Insights tab now shows a count badge when correlation insights are available.
+
+- **Correlation analysis can be triggered from the empty state.** A **Run correlation analysis** button appears when the Insights tab has not yet been populated.
+
+- **Null MFA status shown as "Unknown" instead of a dash.** Identity rows where MFA status could not be determined now show **Unknown** with a tooltip. When these exist, a dedicated **MFA Unknown** stat tile appears and acts as a filter.
+
+- **Compliance preview shows a scored sample.** Free-plan users now see a sample of six controls spanning all six frameworks with a computed score ring. The upgrade gate and real data are unchanged.
+
+- **Remediation queue has a category filter.** A **Category** dropdown narrows queue actions by type (Identity, Access, Credential, Device, Application, Operations). The empty queue state adds navigation buttons to Findings and Integrations.
+
+- **Impact Analysis builder is more compact.** The action builder renders as a single inline row. A **Current Score → If All Implemented** hero card above the list shows the projected score delta if every suggestion is applied.
+
 - **Non-human identity inventory is now first-class.** The **Inventory** page stat strip shows a dedicated **Non-human** tile with the current AI agent and service account count. The page headline adjusts when non-human identities dominate the workspace. A **Non-human first** sort option surfaces agents and service accounts at the top of the list regardless of name or risk score. The tab badge on the Non-human tab counts identities flagged as likely NHI but not yet classified, so the review queue is always visible.
 
 - **Remediation queue shows agent-aware action labels.** When a pending or in-progress action targets an AI agent or service account, the queue uses context-appropriate phrases: **Suspend agent**, **Revoke agent grant**, **Contain agent**. A small agent icon marks those rows so they stand out from human-identity actions.
